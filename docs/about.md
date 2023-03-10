@@ -1,4 +1,11 @@
+---
+title: 关于我
+description: 想了解我看这里
+---
+
 # 关于我
+
+来即是客，请容许我自我介绍一下
 
 ## 我是谁
 
@@ -35,4 +42,4 @@
 
 好吧，不管为什么，都欢迎你来，毕竟平日里和我说话最多的人恐怕就是食堂打菜大妈了，说的最多的话就是：“一根油条，一碗豆浆，不加糖，谢谢” （笑）
 
-邮箱：[shellRaining@gmail.com](shellRaining@gmail.com)
+邮箱：[shellRaining@gmail.com](mailto:shellRaining@gmail.com)
