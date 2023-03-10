@@ -2,24 +2,23 @@
   "name": "vitepress-starter",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"
   },
-  "author": "",
+  "author": "shellRaining",
   "license": "ISC",
+  "dependencies": {
+    "@sugarat/theme":"^0.1.0",
+    "@element-plus/icons-vue": "^2.0.10",
+    "element-plus": "^2.2.28"
+  },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.35.2",
-    "eslint": "^8.34.0",
+    "sass": "^1.58.3",
     "typescript": "^4.9.5",
     "vitepress": "1.0.0-alpha.48",
     "vue": "^3.2.47"
-  },
-  "dependencies": {
-    "sass": "^1.58.3",
-    "vitepress-theme-sakura": "^0.4.2"
   }
 }

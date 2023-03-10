@@ -1,3 +1,3 @@
-# Hello VitePress
-
-hello world!
+---
+layout: home
+---
