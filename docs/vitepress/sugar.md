@@ -1,11 +1,11 @@
 ---
-title: 阅读 sugar theme 的源代码
+title: 阅读 sugar theme 的源代码（环境配置文件）
 tag:
   - vitepress
 description: 本站使用的主题就是 sugar，但是和我的目标不符合，所以希望阅读源码并修改，此处为第一步：阅读源码
 ---
 
-# 阅读 sugar 源代码
+# 阅读 sugar 源代码（环境配置文件）
 
 ## 构成
 
