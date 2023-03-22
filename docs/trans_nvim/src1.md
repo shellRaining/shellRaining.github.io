@@ -106,13 +106,13 @@ local command = api.nvim_create_user_command
 
 command("Translate", function()
     Trans.translate()
-end, { desc = "  单词翻译" })
+end, { desc = "单词翻译" })
 command("TransPlay", function()
     local str = Trans.util.get_str(api.nvim_get_mode().mode)
     if str and str ~= "" and Trans.util.is_English(str) then
         str:play()
     end
-end, { desc = "  自动发音" })
+end, { desc = "自动发音" })
 ```
 
 在这里首先引入了 Trans 库，然后定义了两个 usercmd
@@ -157,4 +157,89 @@ return M
 
 代码开始首先定义了一个函数 `metatable` ，这个函数会给你指定的表设置一个 metatable，这个 metatable 不是简单的表，而是一个函数。当你想要查找的属性不存在于原表时，他将会调用这个函数，从指定的路径引入相应的包，并且将其设置为原表的属性，并最终返回查找的属性。相当于进行了一次懒加载和缓存，能够提高代码性能
 
-然后调用上面定义的函数，最后返回这个包，这个包被调用的地方有，usercmd
+然后调用上面定义的函数，最后返回这个包，这个包被调用的地方有，usercmd，还有……
+
+## core/translate.lua
+
+这是本插件核心代码，用户输入命令后便会执行这里提供的函数，调用方式如下
+
+```lua
+-- plugin/Trans.lua
+command("Translate", function()
+    Trans.translate()
+end, { desc = "单词翻译" })
+```
+
+其源代码如下
+
+```lua
+local Trans = require('Trans')
+local util = Trans.util
+
+local function init_opts(opts)
+    opts = opts or {}
+    opts.mode = opts.mode or ({
+        n = 'normal',
+        v = 'visual',
+    })[vim.api.nvim_get_mode().mode]
+
+    opts.str = util.get_str(opts.mode)
+    return opts
+end
+
+
+---@type table<string, fun(data: TransData): true | nil>
+local strategy = {
+    fallback = function(data)
+        local result = data.result
+        Trans.backend.offline.query(data)
+        if result.offline then return true end
+
+
+        local update = data.frontend:wait()
+        for _, backend in ipairs(data.backends) do
+            ---@cast backend TransBackend
+            backend.query(data)
+            local name = backend.name
+
+            while result[name] == nil do
+                if not update() then return end
+            end
+
+            if result[name] then return true end
+        end
+    end,
+    --- TODO :More Strategys
+}
+
+
+-- HACK : Core process logic
+local function process(opts)
+    opts = init_opts(opts)
+    local str = opts.str
+    if not str or str == '' then return end
+
+    -- Find in cache
+    if Trans.cache[str] then
+        local data = Trans.cache[str]
+        data.frontend:process(data)
+        return
+    end
+
+    local data = Trans.data.new(opts)
+    if strategy[Trans.conf.query](data) then
+        Trans.cache[data.str] = data
+        data.frontend:process(data)
+
+    else
+        data.frontend:fallback()
+    end
+end
+
+
+---@class Trans
+---@field translate fun(opts: { frontend: string?, mode: string?}?) Translate string core function
+return function(opts)
+    coroutine.wrap(process)(opts)
+end
+```

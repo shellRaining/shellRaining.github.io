@@ -14,8 +14,8 @@ export default defineConfig({
       exclude: ["@sugarat/theme"],
     },
   },
+  extends: blogTheme,
   themeConfig: {
-    ...blogTheme,
     lastUpdatedText: "上次更新于",
     nav: [
       {

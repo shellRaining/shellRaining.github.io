@@ -13,7 +13,7 @@ description: 本站使用的主题就是 sugar，但是和我的目标不符合�
 <!-- <template> -->
 <!--   <div> -->
 <!--     <h1> // [!code focus]  -->
-<!--     <span class="name">{{ name }}</span> // [!code focus] -->
+<!--       <span class="name">{{ name }}</span> // [!code focus] -->
 <!--       <span class="motto" v-show="motto">{{ motto }}</span> // [!code focus] -->
 <!--     </h1> // [!code focus] -->
 <!--     <div class="inspiring-wrapper"> // [!code focus] -->
@@ -35,6 +35,55 @@ description: 本站使用的主题就是 sugar，但是和我的目标不符合�
 由于 v-show 只是设置 CSS 属性，因此它可以应用于任何元素，而 v-if 只能应用于带有条件的元素。
 :::
 
+然后看 div 部分，这部分也使用了 v-show，不过先是使用感叹号将 inspiring 强行转化为了 bool 类型，其中还绑定了一个点击事件，用来执行切换 slogan 的操作
+
 ## script 部分
+
+```vue
+<script setup lang="ts">
+import { computed, ref } from "vue";
+import { useData } from "vitepress";
+import { useHomeConfig, useBlogConfig } from "../composables/config/blog";
+
+const { site, frontmatter } = useData();
+const { home } = useBlogConfig();
+
+const name = computed(
+  () => (frontmatter.value.blog?.name ?? site.value.title) || home?.name || ""
+);
+const motto = computed(
+  () => frontmatter.value.blog?.motto || home?.motto || ""
+);
+const initInspiring = ref<string>(
+  frontmatter.value.blog?.inspiring || home?.inspiring || ""
+);
+const inspiring = computed({
+  get() {
+    return initInspiring.value;
+  },
+  set(newValue) {
+    initInspiring.value = newValue;
+  },
+});
+
+const homeConfig = useHomeConfig();
+
+const changeSlogan = async () => {
+  if (typeof homeConfig?.handleChangeSlogan !== "function") {
+    return;
+  }
+  const newSlogan = await homeConfig.handleChangeSlogan(inspiring.value);
+  if (typeof newSlogan !== "string" || !newSlogan.trim()) {
+    return;
+  }
+
+  // 重新渲染数据，同时触发动画
+  inspiring.value = "";
+  setTimeout(async () => {
+    inspiring.value = newSlogan;
+  });
+};
+</script>
+```
 
 ## style 部分
