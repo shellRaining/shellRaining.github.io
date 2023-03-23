@@ -1,11 +1,11 @@
 ---
-title: 阅读 sugar theme 的源代码（源代码4）
+title: 阅读 sugar theme 源代码4（源代码 BlogHomeBanner.vue）
 tag:
   - vitepress
 description: 本站使用的主题就是 sugar，但是和我的目标不符合，所以希望阅读源码并修改，此处为第一步：阅读源码
 ---
 
-# 阅读 sugar 源代码（源代码 BlogHomeBanner.vue）
+# {{ $frontmatter.title }}
 
 ## template 部分
 
@@ -85,5 +85,83 @@ const changeSlogan = async () => {
 };
 </script>
 ```
+
+导入部分我们就不看了，从这段代码开始讲起
+
+```typescript
+const name = computed(
+  () => (frontmatter.value.blog?.name ?? site.value.title) || home?.name || ""
+);
+const motto = computed(
+  () => frontmatter.value.blog?.motto || home?.motto || ""
+);
+const initInspiring = ref<string>(
+  frontmatter.value.blog?.inspiring || home?.inspiring || ""
+);
+const inspiring = computed({
+  get() {
+    return initInspiring.value;
+  },
+  set(newValue) {
+    initInspiring.value = newValue;
+  },
+});
+```
+
+我们可以看到从引入的 frontmatter 中我们首先获取 blog 信息，包括 name，motto 等，如果不存在我们就设置为空字符串。
+
+在这里说一下如何使用 useData API，首先说一下这个函数的作用，他是用来获取特定页面的信息，返回类型是 `VitePressData<T = any>`，具体的接口定义如下
+
+```typescript
+interface VitePressData<T = any> {
+  site: Ref<SiteData<T>>;
+  theme: Ref<T>;
+  page: Ref<PageData>;
+  frontmatter: Ref<PageData["frontmatter"]>;
+  params: Ref<PageData["params"]>;
+  title: Ref<string>;
+  description: Ref<string>;
+  lang: Ref<string>;
+  isDark: Ref<boolean>;
+  dir: Ref<string>;
+  localeIndex: Ref<string>;
+}
+
+interface PageData {
+  title: string;
+  titleTemplate?: string | boolean;
+  description: string;
+  relativePath: string;
+  headers: Header[];
+  frontmatter: Record<string, any>;
+  params?: Record<string, any>;
+  isNotFound?: boolean;
+  lastUpdated?: number;
+}
+```
+
+我们先是获取了 VitePressData 中的 frontmatter 属性（这个属性是一个响应式 Ref 属性），然后利用其获取页面的元数据（包括 name，motto，inspiring），即 markdown 文件中的 yaml 部分，如果存在 blog 属性则获取他的具体值，否则返回空串
+
+然后定义了一个 inspiring 变量，可以视为一个具有响应性的对象，这个对象设置了内部属性 get 和 set 函数来用供 computed 使用
+
+:::warning
+这个里面使用的不是对象内部访问器属性，而是 computed 的语法
+:::
+
+:::info
+对象内部属性可以理解为属性的属性，刻画了对象某个属性所带有的特性，一共有两大类共六种，分别是
+
+- 数据属性
+  - Configurable （表示是否可以通过 delete 删除并重新定义）
+  - Enumerable （表示是否可以通过 for of 循环枚举）
+  - Writable （表示值是否可以修改）
+  - Value （表示实际的值）
+- 访问器属性
+  - getter
+  - setter
+
+设置他们没有语法糖可以使用，必须使用 Object 的静态方法 defineProperty
+
+:::
 
 ## style 部分
