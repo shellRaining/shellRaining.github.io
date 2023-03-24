@@ -7,6 +7,8 @@ description: 本站使用的主题就是 sugar，但是和我的目标不符合�
 
 # {{ $frontmatter.title }}
 
+简单概述一下，node.ts 文件是用来给用户使用的一个文件，想要使用这个主题的用户需要在 config.ts 文件中引入这个文件，然后使用他提供的一些函数来进行配置，比如 `getThemeConfig` 还有 `defineConfig`
+
 ## 模块引入
 
 ```typescript
@@ -113,7 +115,6 @@ files.map((v) => {
 
   const fileContent = fs.readFileSync(v, 'utf-8')
 
-  // TODO: 支持JSON
   const meta: Partial<Theme.PageMeta> = {
     ...matter(fileContent).data
   }
@@ -126,7 +127,6 @@ files.map((v) => {
     // })
     meta.date = getFileBirthTime(v)
   } else {
-    // TODO: 开放配置，设置时区
     meta.date = formatDate(
       new Date(`${new Date(meta.date).toUTCString()}+8`)
     )

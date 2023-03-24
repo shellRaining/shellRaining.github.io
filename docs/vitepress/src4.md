@@ -165,3 +165,66 @@ interface PageData {
 :::
 
 ## style 部分
+
+## chatGPT 注释
+
+```typescript
+import { useData, useRoute } from 'vitepress' // 导入vitepress中的两个hooks
+
+import {
+  Component,
+  computed,
+  defineComponent,
+  h,
+  inject,
+  InjectionKey,
+  provide,
+  ref,
+  Ref
+} from 'vue' // 导入vue中的一些模块
+
+import type { Theme } from './index' // 导入 Theme 类型
+
+const configSymbol: InjectionKey<Ref<Theme.Config>> = Symbol('theme-config') // 创建一个 Symbol 类型的配置项
+
+const activeTagSymbol: InjectionKey<Ref<Theme.activeTag>> = Symbol('active-tag') // 创建一个 Symbol 类型的活动标签
+
+const homeConfigSymbol: InjectionKey<Theme.HomeConfig> = Symbol('home-config') // 创建一个 Symbol 类型的主页配置项
+
+export function withConfigProvider(App: Component) { // 定义一个 withConfigProvider 函数，接收一个组件类型参数 App
+  return defineComponent({
+    name: 'ConfigProvider', // 定义组件的名字
+    props: {
+      handleChangeSlogan: { // 定义 handleChangeSlogan 属性
+        type: Function, // 指定属性的类型为 Function
+        required: false // 指定属性是否是必需的，默认为 false
+      }
+    },
+    setup(props, { slots }) { // 定义组件的 setup 函数，接收 props 和 slots 两个参数
+      provide(homeConfigSymbol, props as Theme.HomeConfig) // 将 props 提供为主页配置
+
+      const { theme } = useData() // 使用 useData 获取 theme
+      const config = computed(() => resolveConfig(theme.value)) // 根据 theme 计算出 config
+      provide(configSymbol, config) // 将 config 提供为配置项
+
+      const activeTag = ref<Theme.activeTag>({
+        label: '',
+        type: ''
+      }) // 创建一个活动标签的 ref，并初始化为空对象
+      provide(activeTagSymbol, activeTag) // 将活动标签提供为 Symbol 类型的活动标签
+
+      return () => h(App, null, slots) // 返回一个函数，渲染传入的 App 组件
+    }
+  })
+}
+
+export function useConfig() { // 定义 useConfig 函数，用于获取配置项
+  return {
+    config: inject(configSymbol)!.value // 获取配置项
+  }
+}
+
+export function useBlogConfig() { // 定义 useBlogConfig 函数，用于获取博客配置
+  return inject(configSymbol)!.value.blog // 获取博客配置
+}
+```

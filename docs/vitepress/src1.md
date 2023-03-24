@@ -7,6 +7,8 @@ description: 本站使用的主题就是 sugar，但是和我的目标不符合�
 
 # {{ $frontmatter.title }}
 
+简单概述：该文件提供了主题的具体配置，来供用户引入。具体的使用方式是在 theme 文件夹下的 index.ts 中使用 ESM 的方式引入，并默认导出本引入的模块
+
 ## 模块引入
 
 ```typescript
