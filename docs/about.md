@@ -23,6 +23,10 @@ description: 想了解我看这里
 - 中度拖延症患者
 - 未完待续……
 
+### `hlchunk:` Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=shellRaining/hlchunk.nvim&type=Date)](https://star-history.com/#shellRaining/hlchunk.nvim&Date)
+
 ## 我为什么要写博客
 
 为什么捏？
