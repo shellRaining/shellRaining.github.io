@@ -44,6 +44,7 @@ description: 想了解我看这里
 
 - [ ] 学习 mermaid 语言，为后续软件工程等工作最准备
 - [ ] 学习 vitepress 插件系统，结合 mermaid 使用
+- [ ] 写一个 Markdown 给标题插入序号的 Neovim 插件
 
 ## 联系我
 
