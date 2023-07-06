@@ -272,3 +272,47 @@ graph LR
 ```
 
 ## 子图
+
+子图和上面提到的语法是差不多的，相当于一个递归，我们用一个比较复杂的例子来介绍
+
+```mmd
+flowchart TB
+    c1-->a2
+    subgraph one
+    a1-->a2
+    end
+    subgraph two
+    b1-->b2
+    end
+    subgraph three
+    c1-->c2
+    end
+
+    one --> two
+    three --> two
+    two --> c2
+```
+
+```mermaid
+flowchart TB
+    c1-->a2
+    subgraph one
+    a1-->a2
+    end
+    subgraph two
+    b1-->b2
+    end
+    subgraph three
+    c1-->c2
+    end
+
+    one --> two
+    three --> two
+    two --> c2
+```
+
+但是请注意，子图必须要有 end 作为结束，否则会报错，而同时外部的图不可以有 end，否则也会报错
+
+## 外部链接
+
+这个我暂时还没有遇到，等遇到以后再来补充
