@@ -1,3 +1,12 @@
+---
+title: lab2
+tag:
+  - patt
+description: report of lab2
+---
+
+# {{ $frontmatter.title }}
+
 ## code and why to do
 
 ```asm
