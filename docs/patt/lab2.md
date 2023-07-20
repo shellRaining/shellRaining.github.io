@@ -115,13 +115,13 @@ loop3
     brzp loop3
 
 Equal
-    ld r0, yes
-    trap x21
+    lea r0, yes
+    trap x22
     halt
 
 notEqual
-    ld r0, no
-    trap x21
+    lea r0, no
+    trap x22
     halt
 
 
@@ -133,15 +133,15 @@ chead .fill #-65
 cnum .fill #-26
 AaInterval .fill #-32
 space .fill #-32
-yes .stringz "y"
-no .stringz "n"
+yes .stringz "YES"
+no .stringz "NO"
 .end
 
 ; place to store string addr
 .orig x4000
 .FILL str1
 .FILL str2
-str1 .STRINGZ "dormitory"
-str2 .STRINGZ "dirty room"
+str1 .STRINGZ "listen"
+str2 .STRINGZ "slient"
 .end
 ```
