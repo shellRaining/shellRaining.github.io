@@ -21,6 +21,8 @@ graph TD
     G --> C
 ```
 
+<!-- <img width='500' src='https://raw.githubusercontent.com/shellRaining/img/main/2307/lab1flowchart.png'> -->
+
 the bin file code as listed
 
 ## code

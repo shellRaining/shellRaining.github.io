@@ -2,7 +2,7 @@
 title: vim.validate 函数
 tag:
   - neovim
-  - functions_introduction
+  - func_intro
 description: 介绍 vim.validate 函数
 ---
 

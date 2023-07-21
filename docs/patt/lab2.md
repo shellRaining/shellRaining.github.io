@@ -7,25 +7,23 @@ description: report of lab2
 
 # {{ $frontmatter.title }}
 
-## code and why to do
+## algorithm
+
+```mermaid
+graph TD
+    A((start)) --> B["n1 = the count of each letter in s1"]
+    B --> C[n2 = the count of each letter in s2]
+    C --> D{ compare every item in n1, n2 } -- if all equal --> E[print YES] --> G((end))
+    D -- if not equal --> F[print NO] --> G
+```
+
+<!-- <img width='500' src='https://raw.githubusercontent.com/shellRaining/img/main/2307/lab2flowchart.png'> -->
+
+## code
 
 ```asm
-.orig x3000
-
-; get the pointer of s1, s2
-; let r1 = s1
-; let r2 = s2
-ldi r1, s1
-ldi r2, s2
-
-; get the total num of every char in s1 and s2
-; malloc arr a1[32] a2[32]
-
 ; while (s1) set char for a1
 loop1
-    ; we use r3 to represent index, use r4 as temp
-    ldr r3, r1, 0
-    brz loop2
     ; s1++
     add r1, r1, 1
     ; if r3 == " ", then goto loop1, equal with continue
@@ -35,32 +33,14 @@ loop1
 
     ; make a to A, A to A
     ; r3 = r3 - 65
-    ld r4, chead
-    add r3, r3, r4
-    ; r4 = r3 - 26
-    ld r4, cnum
-    add r4, r3, r4
-    ; if r4 < 0 then not set r3, else r3 = r4 - 32, which means a to A
-    brn set1
-    ld r4, AaInterval
-    add r3, r3, r4
+    ...
 set1
     ; r5 = &m[index]
-    lea r4, a1
-    add r4, r4, r3
-    ; r5 = *r4, which means r5 = m[index]
-    ldr r5, r4, 0
-    ; r5++
-    add r5, r5, 1
-    ; *r4 = r5
-    str r5, r4, 0
+    ...
     brnzp loop1
 
 ; while (s2) set char for a2
 loop2
-    ; we use r3 to represent index, use r4 as temp
-    ldr r3, r2, 0
-    brz compare
     ; s2++
     add r2, r2, 1
     ; if r3 == " ", then goto loop2, equal with continue
@@ -68,28 +48,7 @@ loop2
     add r4, r3, r4
     brz loop2
 
-    ; make a to A, A to A
-    ; r3 = r3 - 65
-    ld r4, chead
-    add r3, r3, r4
-    ; r4 = r3 - 26
-    ld r4, cnum
-    add r4, r3, r4
-    ; if r4 < 0 then not set r3, else r3 = r4 - 32, which means a to A
-    brn set2
-    ld r4, AaInterval
-    add r3, r3, r4
-set2
-    ; r5 = &m[index]
-    lea r4, a2
-    add r4, r4, r3
-    ; r5 = *r4, which means r5 = m[index]
-    ldr r5, r4, 0
-    ; r5++
-    add r5, r5, 1
-    ; *r4 = r5
-    str r5, r4, 0
-    brnzp loop2
+    same as loop1
 
 ; compare the char num of s1, s2, if all equal, print true
 compare
@@ -102,48 +61,25 @@ compare
     ;   if a1[r3] != a2[r3] goto notEqual
     ;   r3--
     ; at first r3 = 25
-    and r3, r3, 0
-    add r3, r3, #15
-    add r3, r3, #10
 loop3
     ; r4 = a1[r3]; r5 = a2[r3]
-    lea r4, a1
-    lea r5, a2
-    add r4, r3, r4
-    add r5, r3, r5
-    ldr r4, r4, 0
-    ldr r5, r5, 0
-    ; calc r4 - r5
-    not r5, r5
-    add r5, r5, 1
-    add r4, r4, r5
+    ...
     ; if r4 - r5 == 0 goto notEqual
     brnp notEqual
-    ; r3--
-    add r3, r3, #-1
+    ...
     brzp loop3
 
 Equal
-    lea r0, yes
-    trap x22
+    ...
     halt
 
 notEqual
-    lea r0, no
-    trap x22
+    ...
     halt
 
 
-s1 .fill x4000
-s2 .fill x4001
-a1 .blkw #32 ; x20
-a2 .blkw #32
-chead .fill #-65
-cnum .fill #-26
-AaInterval .fill #-32
-space .fill #-32
-yes .stringz "YES"
-no .stringz "NO"
+; place to store string addr
+...
 .end
 
 ; place to store string addr
@@ -154,3 +90,9 @@ str1 .STRINGZ "listen"
 str2 .STRINGZ "slient"
 .end
 ```
+
+## Q&A
+
+> how to get the addr of str1 and str2
+
+because the addr of str1 and str2 was placed at x4000, such as str1 located at x4007, the value of x4000 is x4007, so we need use instructino `ld` or `ldi` to get, but there also exist one problem, is that the param of `ld` or `ldi` is 9-bits length, we can reach x4000, so store at `x3...`, then use `ldi` to get these addr
