@@ -188,7 +188,8 @@ handle_newline
 	not r3, r1
 	add r3, r3, #1
 	add r2, r0, r3
-	brn execute_delay
+	; brn execute_delay
+	brn main
 
 	; cur_char_col = 0; bird_pos--;
 	ld r2, bird_pos
@@ -216,11 +217,13 @@ execute_stay_bottom
 	jsr stay_bottom
 	jsr print_newline
 	brnzp execute_delay
+	; brnzp main
 
 execute_stay_up
 	jsr stay_up
 	jsr print_newline
 	brnzp execute_delay
+	; brnzp main
 	
 execute_delay
 	jsr delay
@@ -285,7 +288,7 @@ loop
 	brnp loop
 	ld r1, save_r1
 	ret
-count .fill x00FF
+count .fill x0FFF
 save_r1 .blkw 1
 
 .end
