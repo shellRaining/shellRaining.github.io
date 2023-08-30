@@ -48,3 +48,15 @@ description: pixiv 找到的图片，也许能记录我的一些心情
 [https://www.pixiv.net/artworks/103920676](https://www.pixiv.net/artworks/103920676)
 
 <img src='https://raw.githubusercontent.com/shellRaining/img/main/2308/p28.jpg'>
+
+## 8.29 向日葵
+
+[https://www.pixiv.net/artworks/111050574](https://www.pixiv.net/artworks/111050574)
+
+<img src='https://raw.githubusercontent.com/shellRaining/img/main/2308/p29_2.jpg'>
+
+## 8.30 汉服
+
+[https://www.pixiv.net/artworks/94369116](https://www.pixiv.net/artworks/94369116)
+
+<img src='https://raw.githubusercontent.com/shellRaining/img/main/2308/p30.jpg'>
