@@ -1,11 +1,10 @@
 import { getThemeConfig, defineConfig } from "@sugarat/theme/node";
-import { withMermaid } from "vitepress-plugin-mermaid";
 
 const blogTheme = getThemeConfig({
   author: "shellRaining",
 });
 
-export default withMermaid(
+export default (
   defineConfig({
     lang: "zh-cmn-Hans",
     title: "shellRaining blog",
@@ -27,6 +26,7 @@ export default withMermaid(
           text: "hlchunk.nvim",
           link: "https://github.com/shellRaining/hlchunk.nvim",
         },
+        { text: "roadmap", link: "/roadmap" },
         { text: "about me", link: "/about" },
       ],
     },

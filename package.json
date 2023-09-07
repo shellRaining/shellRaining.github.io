@@ -15,16 +15,13 @@
   "dependencies": {
     "@algolia/client-search": "^4.18.0",
     "@element-plus/icons-vue": "^2.1.0",
-    "@sugarat/theme": "latest",
+    "@sugarat/theme": "0.1.32",
     "element-plus": "^2.3.7",
     "vue": "^3.3.4"
   },
   "devDependencies": {
-    "@mermaid-js/mermaid-mindmap": "^9.3.0",
-    "mermaid": "9.1.0",
     "sass": "^1.63.6",
     "typescript": "^4.9.5",
-    "vitepress": "latest",
-    "vitepress-plugin-mermaid": "^2.0.10"
+    "vitepress": "v1.0.0-rc.3"
   }
 }
