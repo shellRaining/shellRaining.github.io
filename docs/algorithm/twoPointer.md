@@ -41,7 +41,7 @@ description: 算法小抄中双指针的题目，逐渐补充更难的题目
 
 因为结果要求最大美丽值，所以一定包含一个子数组，这个子数组的最开始的值和最后一个值相差一定是 2k，然后需要求这个子数组的最长值，从这里可以看出是滑动窗口（或者说双指针）
 
-<!-- TODO:使用二分解决问题 -->
+<!-- TODO: 使用二分解决问题 -->
 
 当然，选这道题不只是因为他是双指针，还因为他可以学到二分相关的知识，因为我们可以用 left 变量进行遍历，通过二分查找（寻找大于 nums[left] + 2k 的第一个值）来找到 right 的位置，从而比较出最长的范围。
 
@@ -51,16 +51,20 @@ description: 算法小抄中双指针的题目，逐渐补充更难的题目
 
 [142 环形链表 II](https://leetcode-cn.com/problems/linked-list-cycle-ii/)
 
-[202 快乐数](https://leetcode-cn.com/problems/happy-number/)
+[160 相交链表](https://leetcode.cn/problems/intersection-of-two-linked-lists/)
 
-[876 链表的中间结点](https://leetcode-cn.com/problems/middle-of-the-linked-list/)
+[876 链表的中间节点](https://leetcode.cn/problems/middle-of-the-linked-list/)
+
+环形链表主要是使用了快慢指针，通过快指针二倍速于满指针的方式来判断最终是否有相交部分，相交链表也可以通过环形链表进行转化
+
+这个不是很难，但是需要注意编码方式，注意各种临界点，比如给出了 null 节点作为参数，给出一个节点，两个节点时，分别成环，不成环这五种情况，所以最好先在纸上模拟一遍答案。
 
 [19 删除链表的倒数第 N 个结点](https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/)
 
-[61 旋转链表](https://leetcode-cn.com/problems/rotate-list/)
+[21 合并两个有序列表](https://leetcode-cn.com/problems/merge-two-sorted-lists/)
 
-[234 回文链表](https://leetcode-cn.com/problems/palindrome-linked-list/)
+[23 合并 K 个升序链表](https://leetcode-cn.com/problems/merge-k-sorted-lists/)
 
-[143 重排链表](https://leetcode-cn.com/problems/reorder-list/)
+[86 分隔链表](https://leetcode-cn.com/problems/partition-list/)
 
-[25 K 个一组翻转链表](https://leetcode-cn.com/problems/reverse-nodes-in-k-group/)
+上面这几道题都类似于数组的双指针了，不过多解释。
