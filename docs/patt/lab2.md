@@ -48,8 +48,6 @@ loop2
     add r4, r3, r4
     brz loop2
 
-    same as loop1
-
 ; compare the char num of s1, s2, if all equal, print true
 compare
     ; r1 = &a1[0]; r2 = &a2[0]
