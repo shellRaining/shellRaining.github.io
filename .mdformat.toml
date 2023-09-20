@@ -1,0 +1,1 @@
+wrap = 80 # possible values: {"keep", "no", INTEGER}
