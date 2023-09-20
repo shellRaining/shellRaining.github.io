@@ -44,7 +44,40 @@ description: 上 labuladong 课程的时候做的笔记
 
 ### 1. 背包问题
 
-题目是 [完全平方数](https://leetcode.cn/problems/perfect-squares/?envType=study-plan-v2&envId=dynamic-programming)
+题目是 [完全平方数](https://leetcode.cn/problems/perfect-squares/)
+
+因为本质上是穷举，所以可以通过递归来解决，我们这里给出思路
+
+使用记忆化搜索，自顶向下解决问题
+
+```js
+function numSquares(n: number): number {
+  const choices: number[] = Array.from(
+    { length: Math.floor(Math.sqrt(n)) },
+    (_, k) => (k + 1) * (k + 1)
+  );
+  const cache: Map<number, number> = new Map();
+
+  function helper(n: number): number {
+    if (n === 0) return 0;
+    if (cache.has(n)) return cache.get(n)!;
+
+    let min = Number.MAX_SAFE_INTEGER;
+    for (const choice of choices) {
+      if (choice > n) break;
+      min = Math.min(min, helper(n - choice));
+    }
+
+    const result = min + 1;
+    cache.set(n, result);
+    return result;
+  }
+
+  return helper(n);
+}
+```
+
+使用动态规划。从这里可以看到用了模板，先是找到 choice 和 dp 数组，然后设置 base case，最后通过状态转移方程解决，同时这个代码没有经过优化，如果有需要，可以将 choice 设置到 for 循环内进行判断。
 
 ```js
 function numSquares(n: number): number {
@@ -68,6 +101,13 @@ function numSquares(n: number): number {
 }
 ```
 
-从这里可以看到用了模板，先是找到 choice 和 dp 数组，然后设置 base case，最后通过状态转移方程解决，同时这个代码没有经过优化，如果有需要，可以将 choice 设置到 for 循环内进行判断。
+这道题是一个背包问题（0-1 背包），
 
-<!-- TODO: add something -->
+相同点：
+
+1. 背包容量是 n
+
+不同点：
+
+1. 他的每个物品的价值是 1
+2. 需要事先将这个问题转化成熟悉的样子（通过最少数量和暴力求解可以思考这个部分）
