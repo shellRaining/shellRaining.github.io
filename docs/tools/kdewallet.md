@@ -1,7 +1,7 @@
 ---
 title: Arch Linux 打开 edge 出现 kdewallet 要求输入密码解决办法
 tag:
-  - dotfiles
+  - tools
 description: 确实是一种不太光彩的“解决方案”
 ---
 

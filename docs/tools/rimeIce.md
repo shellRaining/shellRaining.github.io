@@ -1,7 +1,7 @@
 ---
 title: 雾凇拼音安装
 tag:
-    - dotfiles
+    - tools
 description: 因为 Mac上自带的输入法实在是太烂了，所以我切换到了 Rime + 雾凇拼音的方案
 ---
 

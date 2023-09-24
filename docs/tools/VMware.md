@@ -1,7 +1,7 @@
 ---
 title: VMware 安装 Windows 10
 tag:
-    - dotfiles
+    - tools
 description: 想玩白2，但是切换到 Windows 10 有点麻烦，所以在 VMware 中安装了 Windows 10
 ---
 

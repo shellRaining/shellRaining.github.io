@@ -1,7 +1,7 @@
 ---
 title: Arch WSL
 tag:
-  - dotfiles
+  - tools
 description: 在 Windows 下面使用 Arch Linux
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: KDE 主题设置
 tag:
-  - dotfiles
+  - tools
 description: KDE 主题设置（美化）
 ---
 

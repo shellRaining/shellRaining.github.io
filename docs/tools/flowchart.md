@@ -1,7 +1,7 @@
 ---
 title: mermaid 中的流程图
 tag:
-  - dotfiles
+  - tools
   - mermaid
 description: 因为流程图内容过多，所以单独拆分出来
 outline: deep

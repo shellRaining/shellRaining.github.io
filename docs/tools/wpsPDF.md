@@ -1,7 +1,7 @@
 ---
 title: Arch Linux WPS PDF 无法打开解决方案
 tag:
-  - dotfiles
+  - tools
 description: 在 Arch Linux 中解决 WPS PDF 无法打开的问题。
 ---
 

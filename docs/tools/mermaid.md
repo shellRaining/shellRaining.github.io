@@ -1,7 +1,7 @@
 ---
 title: mermaid 使用方法
 tag:
-  - dotfiles
+  - tools
   - mermaid
 description: 因为分析源码还有软件工程需要画很多的流程图，所以找了一个能够通过代码生成的工具。这次选用的是 mermaid
 outline: deep
