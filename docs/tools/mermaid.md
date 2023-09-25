@@ -56,7 +56,7 @@ flowchart LR
 
 如果要转换成 mermaid 的 SVG 图片，需要在代码块中添加 `mermaid` 类型
 
-```mermaid
+```txt
 flowchart LR
   Start --> Stop
 ```
@@ -67,7 +67,7 @@ flowchart LR
 
 ### 1.2.1 流程图
 
-```mermaid
+```txt
 graph TD
   A[Christmas] -->|Get money| B(Go shopping)
   B --> C{Let me think}
@@ -80,7 +80,7 @@ graph TD
 
 ### 1.2.2 时序图
 
-```mermaid
+```txt
 sequenceDiagram
   participant Alice
   participant Bob
@@ -96,7 +96,7 @@ sequenceDiagram
 
 ### 1.2.3 甘特图
 
-```mermaid
+```txt
 gantt
     section Section
     Completed :done,    des1, 2014-01-06,2014-01-08

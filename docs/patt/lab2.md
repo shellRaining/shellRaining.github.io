@@ -9,7 +9,7 @@ description: report of lab2
 
 ## algorithm
 
-```mermaid
+```txt
 graph TD
     A((start)) --> B["n1 = the count of each letter in s1"]
     B --> C[n2 = the count of each letter in s2]

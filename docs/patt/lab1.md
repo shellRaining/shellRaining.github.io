@@ -9,7 +9,7 @@ description: report of lab1
 
 ## algorithm
 
-```mermaid
+```txt
 graph TD
     A((start)) --> B["init var (cnt = 14, mask = 7, VALUE)"]
     B --> C{cnt >= 0}
