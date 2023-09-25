@@ -20,7 +20,7 @@ Only record the options of the plugin
 
 ## function call relation
 
-```text
+```txt
 H.auto_draw -> MiniIndentscope.get_scope -> H.get_line_indent -> H.blank_indent_funs
                                          -> H.cast_ray
                                          -> H.border_from_body

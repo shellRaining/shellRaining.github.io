@@ -35,7 +35,7 @@ graph LR
     D --> E
 ```
 
-```txt
+```mermaid
 graph LR
     A --> B
     B --> C
@@ -51,7 +51,7 @@ graph RL
     D --> E
 ```
 
-```txt
+```mermaid
 graph RL
     A --> B
     B --> C
@@ -108,7 +108,7 @@ graph LR
 A[矩形]
 ```
 
-```txt
+```mermaid
 graph LR
 A[矩形]
 ```
@@ -120,7 +120,7 @@ graph LR
 A(圆角矩形)
 ```
 
-```txt
+```mermaid
 graph LR
 A(圆角矩形)
 ```
@@ -132,7 +132,7 @@ graph LR
 A{菱形}
 ```
 
-```txt
+```mermaid
 graph LR
 A{菱形}
 ```
@@ -144,7 +144,7 @@ graph LR
 A((圆形))
 ```
 
-```txt
+```mermaid
 graph LR
 A((圆形))
 ```
@@ -156,7 +156,7 @@ graph LR
 A([椭圆])
 ```
 
-```txt
+```mermaid
 graph LR
 A([椭圆])
 ```
@@ -168,7 +168,7 @@ flowchart LR
     id1[[This is the text in the box]]
 ```
 
-```txt
+```mermaid
 flowchart LR
     id1[[This is the text in the box]]
 ```
@@ -180,7 +180,7 @@ flowchart LR
     id1[(Database)]
 ```
 
-```txt
+```mermaid
 flowchart LR
     id1[(Database)]
 ```
@@ -212,7 +212,7 @@ graph LR
     F ==> G
 ```
 
-```txt
+```mermaid
 graph LR
     A --> B
     B --- C
@@ -245,7 +245,7 @@ graph LR
     F ----> G
 ```
 
-```txt
+```mermaid
 graph LR
     A --- B
     B ---- C
@@ -265,7 +265,7 @@ graph LR
     B -- text --- C
 ```
 
-```txt
+```mermaid
 graph LR
     A ---|文字| B
     B -- text --- C
@@ -293,7 +293,7 @@ flowchart TB
     two --> c2
 ```
 
-```txt
+```mermaid
 flowchart TB
     c1-->a2
     subgraph one
