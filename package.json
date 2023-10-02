@@ -9,7 +9,7 @@
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"
   },
-  "type": "module",
+  "type": "commonjs",
   "author": "shellRaining",
   "license": "ISC",
   "dependencies": {

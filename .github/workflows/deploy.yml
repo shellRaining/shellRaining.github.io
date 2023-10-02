@@ -21,6 +21,7 @@ jobs:
         with:
           node-version: 16
           cache: npm
+      - run: npm uninstall -g eslint
       - run: npm ci
       - name: Build
         run: npm run docs:build
