@@ -11,7 +11,8 @@ description: 在 Arch Linux 中解决 WPS PDF 无法打开的问题。
 
 在 Arch Linux 中安装 WPS PDF 后，无法打开 PDF 文件，同时无法从 WPS 文字生成 PDF 文件。
 
-出现问题的原因是，WPS PDF 依赖于 `libtiff5`，而 Arch 由于滚动更新的特性，已经升级到了 `libtiff6`，因此 WPS PDF 无法正常工作。同时 aur 中打包的 WPS 也没有将 `libtiff5` 作为依赖，所以会报错。
+出现问题的原因是，WPS PDF 依赖于 `libtiff5`，而 Arch 由于滚动更新的特性，已经升级到了 `libtiff6`，因此 WPS PDF
+无法正常工作。同时 aur 中打包的 WPS 也没有将 `libtiff5` 作为依赖，所以会报错。
 
 ## 解决方案
 
