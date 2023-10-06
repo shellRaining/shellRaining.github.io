@@ -7,6 +7,8 @@ description: 使用 typescript 刷 leetcode，需要注意在文件末尾加上 
 
 # {{ $frontmatter.title }}
 
+这个脚本用来检查文件末尾是否含有指定 pattern，如果没有则打开这些文件。
+
 ```python
 import os
 import subprocess
