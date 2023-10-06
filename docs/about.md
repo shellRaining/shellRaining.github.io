@@ -9,8 +9,6 @@ description: 想了解我看这里
 
 ## 我是谁
 
-<img width='200' src='https://raw.githubusercontent.com/shell-Raining/img/main/head/keqing.jpeg'>
-
 我是一个？
 
 - neovim 爱好者
