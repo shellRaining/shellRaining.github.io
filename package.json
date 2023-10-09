@@ -5,9 +5,7 @@
   "scripts": {
     "dev": "vitepress dev docs",
     "build": "vitepress build docs",
-    "preview": "vitepress preview docs",
-    "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "preview": "vitepress preview docs"
   },
   "type": "commonjs",
   "author": "shellRaining",
@@ -17,6 +15,7 @@
     "@element-plus/icons-vue": "^2.1.0",
     "@sugarat/theme": "latest",
     "element-plus": "^2.3.7",
+    "vitepress-plugin-pagefind": "^0.2.10",
     "vue": "^3.3.4"
   },
   "devDependencies": {

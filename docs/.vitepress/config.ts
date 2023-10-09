@@ -1,26 +1,38 @@
 import { getThemeConfig, defineConfig } from "@sugarat/theme/node";
+import {
+  chineseSearchOptimize,
+  pagefindPlugin,
+} from "vitepress-plugin-pagefind";
 
 const blogTheme = getThemeConfig({
   author: "shellRaining",
+  home: {
+    motto: "始不垂翅，终能奋翼",
+    pageSize: 10,
+  },
+  search: "pagefind",
+  article: {
+    readingTime: true,
+  },
 });
 
 export default defineConfig({
-  lang: "zh-cmn-Hans",
-  title: "shellRaining blog",
-  description: "this is fork from sugar blog",
-  vite: {
-    optimizeDeps: {
-      include: ["element-plus"],
-      exclude: ["@sugarat/theme"],
-    },
-  },
   extends: blogTheme,
+  lang: "zh-cn",
+  vite: {
+    plugins: [
+      pagefindPlugin({
+        customSearchQuery: chineseSearchOptimize,
+        btnPlaceholder: "搜索",
+        placeholder: "搜索文档",
+        emptyText: "空空如也",
+        heading: "共: {{searchResult}} 条结果",
+      }),
+    ],
+  },
   themeConfig: {
     lastUpdatedText: "上次更新于",
-    search: {
-      provider: "local",
-    },
-    logo: "https://raw.githubusercontent.com/shell-Raining/img/main/head/keqing.jpeg",
+    logo: "https://raw.githubusercontent.com/shellRaining/img/main/head/keqing.jpeg",
     nav: [
       {
         text: "hlchunk.nvim",
