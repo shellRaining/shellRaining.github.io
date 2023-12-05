@@ -1,18 +1,10 @@
-<!--toc:start-->
-
-- [options in function](#options-in-function)
-  - [function call relation](#function-call-relation)
-  - [auto_draw options](#autodraw-options)
-    - [H.auto_draw](#hautodraw)
-  - [get border options](#get-border-options)
-    - [H.get_line_indent](#hgetlineindent)
-    - [H.cast_ray](#hcastray)
-    - [H.border_from_body](#hborderfrombody)
-  - [draw_scope options](#drawscope-options)
-    - [draw_scope](#drawscope)
-    - [make_draw_function](#makedrawfunction)
-
-<!--toc:end-->
+---
+title: mini.indentscope 中的函数参数
+tag:
+  - neovim
+  - mini.indentscope
+description: mini.indentscope 中的函数参数
+---
 
 # options in function
 
@@ -36,9 +28,9 @@ This option only contained `lazy` field, which is a boolean value, passed by
 caller function.
 
 ```lua
-	au({ "CursorMoved", "CursorMovedI", "ModeChanged" }, "*", function()
-		H.auto_draw({ lazy = true })
-	end, "Auto draw indentscope lazily")
+au({ "CursorMoved", "CursorMovedI", "ModeChanged" }, "*", function()
+    H.auto_draw({ lazy = true })
+end, "Auto draw indentscope lazily")
 ```
 
 ### H.auto_draw
@@ -55,7 +47,7 @@ This options is created in `get_scope` function
 opts = H.get_config({ options = opts }).options
 ```
 
-It is similar to user's config
+`get_config` return value is similar to user's config
 
 ```lua
 {
